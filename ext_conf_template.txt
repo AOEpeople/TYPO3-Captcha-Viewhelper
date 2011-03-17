@@ -1,0 +1,6 @@
+	# cat=basic; type=input; label=Background color of captcha Image, RGB Values
+captcha_background_color = 0,0,0
+	# cat=basic; type=input; label=
+captcha_background_width = 200
+	# cat=basic; type=input; label=Background color of captcha Image, RGB Values
+captcha_background_height = 70
