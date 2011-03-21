@@ -29,7 +29,7 @@ class Tx_CaptchaViewhelper_Captcha {
 		$fe_user = tslib_eidtools::initFeUser();
 		tslib_eidtools::connectDB();
 		$fe_user->setKey ( 'ses', self::SESSION_KEY, $text );
-		$fe_user->storeSessionData(); 
+		$fe_user->storeSessionData();
 	}
 	/**
 	 * @return string

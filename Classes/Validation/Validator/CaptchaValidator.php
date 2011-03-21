@@ -16,8 +16,13 @@ class Tx_CaptchaViewhelper_Validation_Validator_CaptchaValidator extends Tx_Extb
 	public function isValid($value) {
 		$this->errors = array();
 		$captcha = new Tx_CaptchaViewhelper_Captcha();
-		if($value !== $captcha->getTextInSession()){
-			$this->addError('Text is wrong.', 170320111501);
+		try{
+			if($value !== $captcha->getTextInSession()){
+				$this->addError('Text is wrong.', 170320111501);
+				return FALSE;
+			}
+		}catch(Exception $e){
+			t3lib_div::devLog ( 'captcha error: ' . $e->getMessage (), 'captcha_viewhelper', 2 );
 			return FALSE;
 		}
 		return TRUE;
