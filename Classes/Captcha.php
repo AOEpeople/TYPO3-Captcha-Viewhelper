@@ -17,7 +17,7 @@ class Tx_CaptchaViewhelper_Captcha {
 		$captcha->width= $configuration['captcha_background_width']; 
 		$captcha->height= $configuration['captcha_background_height']; 
 		$captcha->resourcesPath = $captchaRoot.$captcha->resourcesPath;
-		$captcha->wordsFile  = $captchaRoot.$captcha->wordsFile;
+		$captcha->wordsFile  = $captcha->resourcesPath.'/'.$captcha->wordsFile;
 		$text = $captcha->CreateImage();
 		$this->storeTextInSession($text);
 	}
