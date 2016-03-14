@@ -1,5 +1,5 @@
 {
-    "name": "aoe/captcha-viewhelper",
+    "name": "typo3-ter/captcha-viewhelper",
     "description": "captcha view helper based on extbase and fluid",
     "type": "typo3-cms-extension",
     "homepage": "https://forge.typo3.org/projects/extension-captcha_viewhelper",
