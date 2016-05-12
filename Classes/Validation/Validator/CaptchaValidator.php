@@ -1,9 +1,12 @@
 <?php
-require_once dirname(__FILE__).'/../../../Classes/Captcha.php';
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
+
 /**
  * Captcha Validator
  */
-class Tx_CaptchaViewhelper_Validation_Validator_CaptchaValidator extends Tx_Extbase_Validation_Validator_AbstractValidator {
+class Tx_CaptchaViewhelper_Validation_Validator_CaptchaValidator extends AbstractValidator {
 
 	/**
 	 * Returns TRUE, if the given property ($value) matches the session captcha Value.
@@ -14,7 +17,6 @@ class Tx_CaptchaViewhelper_Validation_Validator_CaptchaValidator extends Tx_Extb
 	 * @return boolean TRUE if the value is valid, FALSE if an error occured
 	 */
 	public function isValid($value) {
-		$this->errors = array();
 		$captcha = new Tx_CaptchaViewhelper_Captcha();
 		try{
 			if($value !== $captcha->getTextInSession()){
@@ -22,7 +24,7 @@ class Tx_CaptchaViewhelper_Validation_Validator_CaptchaValidator extends Tx_Extb
 				return FALSE;
 			}
 		}catch(Exception $e){
-			t3lib_div::devLog ( 'captcha error: ' . $e->getMessage (), 'captcha_viewhelper', 2 );
+			GeneralUtility::devLog ( 'captcha error: ' . $e->getMessage (), 'captcha_viewhelper', 2 );
 			return FALSE;
 		}
 		return TRUE;

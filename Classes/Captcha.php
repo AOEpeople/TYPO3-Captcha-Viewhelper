@@ -1,5 +1,8 @@
 <?php
 require_once dirname(__FILE__).'/../Contrib/cool-php-captcha-0.3/captcha.php';
+
+use \TYPO3\CMS\Frontend\Utility\EidUtility;
+
 /**
  * Captcha generator
  * @package captcha_viewhelper
@@ -26,8 +29,7 @@ class Tx_CaptchaViewhelper_Captcha {
 	 * @param string $text
 	 */
 	private function storeTextInSession($text){
-		$fe_user = tslib_eidtools::initFeUser();
-		tslib_eidtools::connectDB();
+		$fe_user = EidUtility::initFeUser();
 		$fe_user->setKey ( 'ses', self::SESSION_KEY, $text );
 		$fe_user->storeSessionData();
 	}
